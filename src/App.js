@@ -1,6 +1,4 @@
 import React from 'react';
-import './App.css';
-import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
 import { Category, ChartComponent, ColumnSeries, Inject, LineSeries, SeriesCollectionDirective, SeriesDirective, Tooltip } from '@syncfusion/ej2-react-charts';
 import VisibleHeatMap from './components/VisibleHeatMap';
 import VisibleGrid from './components/VisibleGrid';
@@ -18,34 +16,36 @@ function App() {
   let primaryxAxis = { valueType: 'Category' };
 
   return (
-
-    <div className="App">
-      <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            <ChartComponent primaryXAxis={primaryxAxis}>
-              <Inject services={[ColumnSeries, Tooltip, LineSeries, Category]} />
-              <SeriesCollectionDirective>
-                <SeriesDirective dataSource={data} xName='month' yName='sales' name='Sales' />
-              </SeriesCollectionDirective>
-            </ChartComponent>
-
-          </div>
-          <div className="col-sm">
-            <VisibleGrid />
-          </div>
-          <div className="col-sm">
-          <VisibleBulletChart/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg">
-
-            <VisibleHeatMap />
-          </div>
+    <div className="chart-area">
+      <div className="row">
+        <div className="col-lg main-header-chart">
+          <VisibleBulletChart />
         </div>
       </div>
+      <div className="row">
+        <div className="col-md">
+          <ChartComponent primaryXAxis={primaryxAxis}>
+            <Inject services={[ColumnSeries, Tooltip, LineSeries, Category]} />
+            <SeriesCollectionDirective>
+              <SeriesDirective dataSource={data} xName='month' yName='sales' name='Sales' />
+            </SeriesCollectionDirective>
+          </ChartComponent>
+        </div>
+        <div className="col-md">
+          <VisibleHeatMap />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md">
 
+        </div>
+
+      </div>
+      <div className="row">
+        <div className="col-lg last-section">
+          <VisibleGrid />
+        </div>
+      </div>
     </div>
   );
 }
